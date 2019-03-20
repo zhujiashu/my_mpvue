@@ -1,5 +1,8 @@
 <template>
+  
   <div @click="clickHandle" class="page-list">
+    <a href="/pages/counter/main">word页面</a>
+
         <van-collapse  :value="activeNames" @change="onChange">
         <van-collapse-item  name="0">
            <view slot="title" style="display:flex;align-items: center; justify-content:space-between">最近使用
