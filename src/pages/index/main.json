@@ -1,0 +1,8 @@
+{
+    "usingComponents": {
+        "van-collapse": "../../../static/dist/collapse/index",
+        "van-collapse-item": "../../../static/dist/collapse-item/index",
+        "i-collapse": "../../../static/iview/collapse/index",
+        "i-collapse-item": "../../../static/iview/collapse-item/index"
+        }
+}
