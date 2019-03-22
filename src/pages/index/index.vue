@@ -1,8 +1,6 @@
 <template>
-  
   <div @click="clickHandle" class="page-list">
-    <a href="/pages/counter/main">word页面</a>
-
+    <router-link to='../counter/main'></router-link>
         <van-collapse  :value="activeNames" @change="onChange">
         <van-collapse-item  name="0">
            <view slot="title" style="display:flex;align-items: center; justify-content:space-between">最近使用
@@ -34,6 +32,35 @@
 
         </van-collapse-item>
     </van-collapse>
+
+ <picker-view
+        indicator-style="height: 42px;"
+        style="width: 100%; height: 300px;margin:5px 0px ;background-color:#fff"
+        :value="value"
+        @change="bindChange"
+     >
+     <!-- 第一环 -->
+    <picker-view-column class="sh-box">
+      <view v-for="(item,index) in colorsList" :key="index"  class="colorBox" :style="'background-color:'+ item.color " ><span :style="item.name == '白色'? 'color:'+'#000':'color:'+'#fff'">{{item.name}}</span></view>
+    </picker-view-column>
+    <!-- 第二环 -->
+     <picker-view-column class="sh-box">
+      <view v-for="(item,index) in colorsList" :key="index" class="colorBox" :style="'background-color:'+ item.color"><span :style="item.name == '白色'? 'color:'+'#000':'color:'+'#fff'">{{item.name}}</span></view>
+    </picker-view-column>
+    <!-- 第三环 -->
+     <picker-view-column class="sh-box">
+      <view v-for="(item,index) in colorsList" :key="index" class="colorBox" :style="'background-color:'+ item.color"><span :style="item.name == '白色'? 'color:'+'#000':'color:'+'#fff'">{{item.name}}</span></view>
+    </picker-view-column>
+    <!-- 第四环 -->
+    <picker-view-column class="sh-box">
+      <view v-for="(item,index) in colorsList" :key="index" class="colorBox" :style="'background-color:'+ item.color"><span :style="item.name == '白色'? 'color:'+'#000':'color:'+'#fff'">{{item.name}}</span></view>
+    </picker-view-column>
+    <!-- 第五环 -->
+    <picker-view-column class="sh-box">
+      <view v-for="(item,index) in colorsList" :key="index" class="colorBox" :style="'background-color:'+ item.color" ><span :style="item.name == '白色'? 'color:'+'#000':'color:'+'#fff'">{{item.name}}</span></view>
+    </picker-view-column>
+     </picker-view>
+
   </div>
 </template>
 
@@ -47,7 +74,24 @@ export default {
         name: 'name1',
         activeNames: ['1'],
         dataList:dataList.data,
-        dataListST:dataListST.data
+        dataListST:dataListST.data,
+   
+    colorsList:[
+        {name:'黑色',id:0,color:'#000000'},
+        {name:'棕色',id:1,color:'#785549'},
+        {name:'红色',id:2,color:'#e0232c'},
+        {name:'橙色',id:3,color:'#fb8e25'},
+        {name:'黄色',id:4,color:'#fed431'},
+        {name:'绿色',id:5,color:'#34992d'},
+        {name:'蓝色',id:6,color:'#21abf1'},
+        {name:'紫色',id:7,color:'#6442b4'},
+        {name:'灰色',id:8,color:'#9e9e9e'},
+        {name:'白色',id:9,color:'#ffffff'},
+        {name:'金色',id:10,color:'#cda139'},
+        {name:'银色',id:11,color:'#bdbdbe'}
+        ]
+
+
     }
   },
 
@@ -63,7 +107,8 @@ export default {
   },
     clickHandle (ev) {
       console.log('clickHandle:', ev)
-    }
+    },
+    
   },
 
   created () {
@@ -73,6 +118,17 @@ export default {
 </script>
 
 <style scoped>
+ .sh-box{
+    margin: 0 4rpx;
+  }
+  .colorBox{
+    width: 50px;
+    height: 42px;
+    font-size: 13px;/*px*/
+    text-align: center;
+    color: #fff;
+    line-height: 50px;
+  }
   .page-list {
     background-color: #10202E;
     color: #93A1B4;
@@ -120,12 +176,14 @@ export default {
             margin-top: 25rpx;
             text-align: center;
             color: rgba(255, 255, 255, .8);
-            height: 76rpx;
-            overflow:hidden;
-             text-overflow:ellipsis;
-             display:-webkit-box;
-              -webkit-box-orient:vertical;
-              -webkit-line-clamp:2;
+            width: 70px;
+            line-height: 35px;
+                display: -webkit-box;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                word-break: break-all;
+                -webkit-box-orient: vertical;
+                -webkit-line-clamp: 2;
           }
       
 </style>
